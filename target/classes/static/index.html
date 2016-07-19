@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MicroService</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body ng-app="myCatalogue" ng-controller="CatController">
+	<div class="container spacer">
+		<form>
+			<label>Cle:</label> <input type="text" ng-model="motcle">
+			<button ng-click="charger()">chercher</button>
+		</form>
+	</div>
+	<div class="container spacer">
+		<table class=" table table-striped">
+			<thead>
+				<tr>
+					<th>Ref</th>
+					<th>Des</th>
+					<th>Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="p in produits.content">
+					<td>{{p.ref}}</td>
+					<td>{{p.designation}}</td>
+					<td>{{p.prix}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li ng-class="{active:$index==page}" class="clicable "
+				ng-repeat="p in pages track by $index"><a
+				ng-click="goTo($index)">{{$index}}</a></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
